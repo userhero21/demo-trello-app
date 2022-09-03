@@ -1,7 +1,7 @@
 package com.company.demotrello.config.security.jwt;
 
 import com.company.demotrello.config.security.UserDetails;
-import com.company.demotrello.services.AuthUserService;
+import com.company.demotrello.services.auth.AuthUserService;
 import com.company.demotrello.utils.jwt.TokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

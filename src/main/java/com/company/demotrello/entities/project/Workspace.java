@@ -18,6 +18,8 @@ public class Workspace extends Auditable {
 
     private String name;
 
+    private String description;
+
     @ManyToOne
     private AuthUser owner;
 

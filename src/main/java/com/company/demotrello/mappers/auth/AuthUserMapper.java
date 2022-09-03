@@ -1,4 +1,4 @@
-package com.company.demotrello.mappers;
+package com.company.demotrello.mappers.auth;
 
 import com.company.demotrello.dtos.UserRegisterDTO;
 import com.company.demotrello.dtos.auth.AuthUserDTO;

@@ -1,22 +1,18 @@
-package com.company.demotrello.services;
+package com.company.demotrello.services.auth;
 
 import com.company.demotrello.config.security.UserDetails;
 import com.company.demotrello.dtos.JwtResponse;
 import com.company.demotrello.dtos.LoginRequest;
 import com.company.demotrello.dtos.RefreshTokenRequest;
 import com.company.demotrello.dtos.UserRegisterDTO;
-import com.company.demotrello.dtos.auth.AuthUserDTO;
 import com.company.demotrello.entities.auth.AuthUser;
 import com.company.demotrello.exceptions.GenericInvalidTokenException;
-import com.company.demotrello.exceptions.GenericNotFoundException;
-import com.company.demotrello.exceptions.GenericRuntimeException;
-import com.company.demotrello.mappers.AuthUserMapper;
+import com.company.demotrello.mappers.auth.AuthUserMapper;
 import com.company.demotrello.repository.AuthUserRepository;
 import com.company.demotrello.utils.jwt.TokenService;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -85,11 +81,15 @@ public class AuthUserService implements UserDetailsService {
                         request.password()));
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
         String accessToken = accessTokenService.generateToken(userDetails);
         String refreshToken = refreshTokenService.generateToken(userDetails);
+
         AuthUser authUser = userDetails.authUser();
         authUser.setLastLoginTime(LocalDateTime.now());
+
         authUserRepository.save(authUser);
+
         return new JwtResponse(accessToken, refreshToken, "Bearer");
     }
 

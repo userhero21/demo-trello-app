@@ -1,7 +1,7 @@
 package com.company.demotrello.config.security;
 
 import com.company.demotrello.config.security.jwt.JWTFilter;
-import com.company.demotrello.services.AuthUserService;
+import com.company.demotrello.services.auth.AuthUserService;
 import com.company.demotrello.utils.jwt.TokenService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

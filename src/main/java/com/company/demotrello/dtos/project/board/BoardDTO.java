@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BoardCreateDTO {
+public class BoardDTO {
     private String name;
     private String description;
     private Long workspaceId;

@@ -1,10 +1,10 @@
 package com.company.demotrello.controllers.auth;
 
 import com.company.demotrello.controllers.ApiController;
-import com.company.demotrello.dtos.JwtResponse;
-import com.company.demotrello.dtos.LoginRequest;
-import com.company.demotrello.dtos.RefreshTokenRequest;
-import com.company.demotrello.dtos.UserRegisterDTO;
+import com.company.demotrello.dtos.config.JwtResponse;
+import com.company.demotrello.dtos.config.LoginRequest;
+import com.company.demotrello.dtos.config.RefreshTokenRequest;
+import com.company.demotrello.dtos.config.UserRegisterDTO;
 import com.company.demotrello.entities.auth.AuthUser;
 import com.company.demotrello.response.ApiResponse;
 import com.company.demotrello.services.auth.AuthUserService;

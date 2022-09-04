@@ -1,8 +1,11 @@
-package com.company.demotrello.controllers;
+package com.company.demotrello.controllers.project;
 
+import com.company.demotrello.controllers.ApiController;
 import com.company.demotrello.dtos.project.workspace.WorkspaceCreateDTO;
 import com.company.demotrello.dtos.project.workspace.WorkspaceDTO;
+import com.company.demotrello.entities.project.Workspace;
 import com.company.demotrello.response.ApiResponse;
+import com.company.demotrello.response.project.workspace.WorkspaceResponse;
 import com.company.demotrello.services.WorkspaceService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +20,7 @@ public class WorkspaceController extends ApiController<WorkspaceService> {
     }
 
     @GetMapping(PATH + "/workspace")
-    public ApiResponse<List<WorkspaceDTO>> getAll() {
+    public ApiResponse<WorkspaceResponse<List<WorkspaceDTO>, List<WorkspaceDTO>>> getAll() {
         return new ApiResponse<>(service.getAll());
     }
 
@@ -27,8 +30,8 @@ public class WorkspaceController extends ApiController<WorkspaceService> {
     }
 
     @PostMapping(PATH + "/workspace")
-    public ApiResponse<Void> create(@Valid @RequestBody WorkspaceCreateDTO workspaceCreateDTO) {
-        service.create(workspaceCreateDTO);
+    public ApiResponse<Void> create(@Valid @RequestBody WorkspaceCreateDTO dto) {
+        service.create(dto);
         return new ApiResponse<>(201);
     }
 

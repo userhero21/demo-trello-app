@@ -1,10 +1,10 @@
 package com.company.demotrello.services.auth;
 
 import com.company.demotrello.config.security.UserDetails;
-import com.company.demotrello.dtos.JwtResponse;
-import com.company.demotrello.dtos.LoginRequest;
-import com.company.demotrello.dtos.RefreshTokenRequest;
-import com.company.demotrello.dtos.UserRegisterDTO;
+import com.company.demotrello.dtos.config.JwtResponse;
+import com.company.demotrello.dtos.config.LoginRequest;
+import com.company.demotrello.dtos.config.RefreshTokenRequest;
+import com.company.demotrello.dtos.config.UserRegisterDTO;
 import com.company.demotrello.entities.auth.AuthUser;
 import com.company.demotrello.exceptions.GenericInvalidTokenException;
 import com.company.demotrello.mappers.auth.AuthUserMapper;

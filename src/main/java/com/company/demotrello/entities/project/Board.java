@@ -14,9 +14,17 @@ import java.util.Collection;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Boards extends Auditable {
+public class Board extends Auditable {
 
     private String name;
+
+    private String description;
+
+    @OneToMany(mappedBy = "board")
+    private Collection<Columns> columns = new ArrayList<>();
+
+    @ManyToOne
+    private Workspace workspace;
 
     @ManyToMany
     @JoinTable(
@@ -25,8 +33,6 @@ public class Boards extends Auditable {
             inverseJoinColumns = @JoinColumn(name = "auth_user_id"))
     private Collection<AuthUser> members = new ArrayList<>();
 
-    @OneToMany(mappedBy = "board")
-    private Collection<Columns> columns = new ArrayList<>();
 
 
 }

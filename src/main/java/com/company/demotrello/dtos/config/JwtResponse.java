@@ -1,4 +1,4 @@
-package com.company.demotrello.dtos;
+package com.company.demotrello.dtos.config;
 
 public record JwtResponse(
         String accessToken,

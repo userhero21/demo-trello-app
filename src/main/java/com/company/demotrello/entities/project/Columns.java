@@ -23,7 +23,7 @@ public class Columns extends Auditable {
     private Collection<Cards> cards = new ArrayList<>();
 
     @ManyToOne
-    private Boards board;
+    private Board board;
 
 
 }

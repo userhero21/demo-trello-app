@@ -20,7 +20,10 @@ public class Workspace extends Auditable {
 
     private String description;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "workspace", fetch = FetchType.EAGER)
+    private Collection<Board> boards = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private AuthUser owner;
 
     @ManyToMany

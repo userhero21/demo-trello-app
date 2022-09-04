@@ -5,6 +5,8 @@ import com.company.demotrello.entities.project.Cards;
 import com.company.demotrello.entities.project.Tasks;
 import com.company.demotrello.entities.project.Workspace;
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -34,8 +36,6 @@ public class AuthUser extends Auditable {
     @Enumerated(EnumType.STRING)
     private Status status = Status.NOT_ACTIVE;
 
-    @OneToMany(mappedBy = "owner")
-    private Collection<Workspace> workspaces = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(
@@ -59,6 +59,8 @@ public class AuthUser extends Auditable {
     )
     private Collection<AuthRole> roles;
 
+    @ManyToMany(mappedBy = "members")
+    private Collection<Workspace> joinWorkspaces = new ArrayList<>();
 
     public enum Status {
         ACTIVE, NOT_ACTIVE, BLOCKED,

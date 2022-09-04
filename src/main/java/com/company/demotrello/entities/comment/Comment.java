@@ -2,7 +2,7 @@ package com.company.demotrello.entities.comment;
 
 import com.company.demotrello.entities.auth.AuthUser;
 import com.company.demotrello.entities.base.Auditable;
-import com.company.demotrello.entities.project.Cards;
+import com.company.demotrello.entities.project.Card;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -13,8 +13,8 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-public class Comments extends Auditable {
+@Entity(name = "comments")
+public class Comment extends Auditable {
 
     private String title;
 
@@ -22,6 +22,6 @@ public class Comments extends Auditable {
     private AuthUser authUser;
 
     @ManyToOne
-    private Cards card;
+    private Card card;
 
 }

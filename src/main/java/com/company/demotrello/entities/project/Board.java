@@ -13,15 +13,15 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
+@Entity(name = "boards")
 public class Board extends Auditable {
 
     private String name;
 
     private String description;
 
-    @OneToMany(mappedBy = "board")
-    private Collection<Columns> columns = new ArrayList<>();
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
+    private Collection<Column> columns = new ArrayList<>();
 
     @ManyToOne
     private Workspace workspace;

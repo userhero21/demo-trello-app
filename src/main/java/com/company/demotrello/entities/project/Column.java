@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -14,13 +15,15 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-public class Columns extends Auditable {
+@Entity(name = "columns")
+public class Column extends Auditable {
 
-    private int orderNumber;
+    private String name;
+
+    private int position;
 
     @OneToMany(mappedBy = "column")
-    private Collection<Cards> cards = new ArrayList<>();
+    private Collection<Card> cards = new ArrayList<>();
 
     @ManyToOne
     private Board board;

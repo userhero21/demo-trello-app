@@ -1,6 +1,6 @@
-package com.company.demotrello.services;
+package com.company.demotrello.services.project;
 
-import com.company.demotrello.config.security.UserDetails;
+import com.company.demotrello.config.Temp;
 import com.company.demotrello.dtos.project.workspace.WorkspaceCreateDTO;
 import com.company.demotrello.dtos.project.workspace.WorkspaceDTO;
 import com.company.demotrello.entities.project.Workspace;
@@ -10,10 +10,8 @@ import com.company.demotrello.repository.project.WorkspaceRepository;
 import com.company.demotrello.response.project.workspace.WorkspaceResponse;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -26,9 +24,8 @@ public class WorkspaceService {
 
 
     public WorkspaceResponse<List<WorkspaceDTO>, List<WorkspaceDTO>> getAll() {
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Workspace> myWorkspaces = workspaceRepository.getWorkspacesByOwner(userDetails.authUser());
-        List<Workspace> joinWorkspaces = workspaceRepository.getWorkspacesByMembers_Id(userDetails.authUser().getId());
+        List<Workspace> myWorkspaces = workspaceRepository.getWorkspacesByOwner(Temp.authUser);
+        List<Workspace> joinWorkspaces = workspaceRepository.getWorkspacesByMembers_Id(Temp.authUser.getId());
 
         return new WorkspaceResponse<>(workspaceMapper.toDTO(myWorkspaces), workspaceMapper.toDTO(joinWorkspaces));
     }
@@ -41,8 +38,7 @@ public class WorkspaceService {
 
     public void create(WorkspaceCreateDTO workspaceCreateDTO) {
         Workspace workspace = workspaceMapper.fromWorkspaceCreateDTO(workspaceCreateDTO);
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        workspace.setOwner(userDetails.authUser());
+        workspace.setOwner(Temp.authUser);
         workspaceRepository.save(workspace);
     }
 

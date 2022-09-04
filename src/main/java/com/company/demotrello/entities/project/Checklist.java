@@ -11,15 +11,15 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-public class Checklists extends Auditable {
+@Entity(name = "checklists")
+public class Checklist extends Auditable {
 
     private String name;
 
     @ManyToOne
-    private Cards card;
+    private Card card;
 
     @ManyToOne
-    private Tasks task;
+    private Task task;
 
 }

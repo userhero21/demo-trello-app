@@ -5,7 +5,7 @@ import com.company.demotrello.dtos.project.board.BoardCreateDTO;
 import com.company.demotrello.dtos.project.board.BoardDTO;
 import com.company.demotrello.response.ApiResponse;
 import com.company.demotrello.response.project.board.BoardResponse;
-import com.company.demotrello.services.BoardService;
+import com.company.demotrello.services.project.BoardService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

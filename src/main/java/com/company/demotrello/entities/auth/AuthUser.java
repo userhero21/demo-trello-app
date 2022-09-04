@@ -1,12 +1,10 @@
 package com.company.demotrello.entities.auth;
 
 import com.company.demotrello.entities.base.Auditable;
-import com.company.demotrello.entities.project.Cards;
-import com.company.demotrello.entities.project.Tasks;
+import com.company.demotrello.entities.project.Card;
+import com.company.demotrello.entities.project.Task;
 import com.company.demotrello.entities.project.Workspace;
 import lombok.*;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -42,14 +40,14 @@ public class AuthUser extends Auditable {
 //            name = "auth_user_cards",
             joinColumns = @JoinColumn(name = "auth_user_id"),
             inverseJoinColumns = @JoinColumn(name = "task_id"))
-    private Collection<Tasks> tasks = new ArrayList<>();
+    private Collection<Task> tasks = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(
 //            name = "auth_user_cards",
             joinColumns = @JoinColumn(name = "card_id"),
             inverseJoinColumns = @JoinColumn(name = "auth_user_id"))
-    private Collection<Cards> cards = new ArrayList<>();
+    private Collection<Card> cards = new ArrayList<>();
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(

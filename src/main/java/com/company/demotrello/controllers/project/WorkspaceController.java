@@ -3,10 +3,9 @@ package com.company.demotrello.controllers.project;
 import com.company.demotrello.controllers.ApiController;
 import com.company.demotrello.dtos.project.workspace.WorkspaceCreateDTO;
 import com.company.demotrello.dtos.project.workspace.WorkspaceDTO;
-import com.company.demotrello.entities.project.Workspace;
 import com.company.demotrello.response.ApiResponse;
 import com.company.demotrello.response.project.workspace.WorkspaceResponse;
-import com.company.demotrello.services.WorkspaceService;
+import com.company.demotrello.services.project.WorkspaceService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

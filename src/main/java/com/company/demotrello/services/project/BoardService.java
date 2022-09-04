@@ -1,9 +1,8 @@
-package com.company.demotrello.services;
+package com.company.demotrello.services.project;
 
 import com.company.demotrello.config.Temp;
 import com.company.demotrello.dtos.project.board.BoardCreateDTO;
 import com.company.demotrello.dtos.project.board.BoardDTO;
-import com.company.demotrello.dtos.project.workspace.WorkspaceDTO;
 import com.company.demotrello.entities.project.Board;
 import com.company.demotrello.entities.project.Workspace;
 import com.company.demotrello.exceptions.GenericNotFoundException;
@@ -11,16 +10,13 @@ import com.company.demotrello.mappers.project.BoardMapper;
 import com.company.demotrello.repository.project.BoardRepository;
 import com.company.demotrello.repository.project.WorkspaceRepository;
 import com.company.demotrello.response.project.board.BoardResponse;
-import com.company.demotrello.response.project.workspace.WorkspaceResponse;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +32,7 @@ public class BoardService {
         ArrayList<Board> myBoards = new ArrayList<>();
         myWorkspaces.forEach(workspace -> myBoards.addAll(workspace.getBoards()));
         // TODO: 9/5/2022 fix workspaceId
+        // TODO: 9/5/2022 fix joinBoards
 
         return new BoardResponse<>(boardMapper.toDTO(myBoards), null);
     }

@@ -1,7 +1,7 @@
 package com.company.demotrello.entities.utils;
 
 import com.company.demotrello.entities.base.Auditable;
-import com.company.demotrello.entities.project.Cards;
+import com.company.demotrello.entities.project.Card;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -16,8 +16,8 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-public class Labels extends Auditable {
+@Entity(name = "labels")
+public class Label extends Auditable {
 
     private String name;
 
@@ -28,6 +28,6 @@ public class Labels extends Auditable {
 //            name = "auth_user_cards",
             joinColumns = @JoinColumn(name = "label_id"),
             inverseJoinColumns = @JoinColumn(name = "card_id"))
-    private Collection<Cards> cards = new ArrayList<>();
+    private Collection<Card> cards = new ArrayList<>();
 
 }

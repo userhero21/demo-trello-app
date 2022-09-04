@@ -13,8 +13,8 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-public class Tasks extends Auditable {
+@Entity(name = "tasks")
+public class Task extends Auditable {
 
     private String name;
 
@@ -28,6 +28,6 @@ public class Tasks extends Auditable {
     private Collection<AuthUser> members = new ArrayList<>();
 
     @OneToMany(mappedBy = "task")
-    private Collection<Checklists> checklists = new ArrayList<>();
+    private Collection<Checklist> checklists = new ArrayList<>();
 
 }

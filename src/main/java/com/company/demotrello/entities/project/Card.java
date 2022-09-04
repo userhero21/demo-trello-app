@@ -2,8 +2,8 @@ package com.company.demotrello.entities.project;
 
 import com.company.demotrello.entities.auth.AuthUser;
 import com.company.demotrello.entities.base.Auditable;
-import com.company.demotrello.entities.comment.Comments;
-import com.company.demotrello.entities.utils.Labels;
+import com.company.demotrello.entities.comment.Comment;
+import com.company.demotrello.entities.utils.Label;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,21 +15,21 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-public class Cards extends Auditable {
+@Entity(name = "cards")
+public class Card extends Auditable {
 
     private String name;
 
     private String description;
 
     @OneToMany(mappedBy = "card")
-    private Collection<Checklists> checklists = new ArrayList<>();
+    private Collection<Checklist> checklists = new ArrayList<>();
 
     @OneToMany(mappedBy = "card")
-    private Collection<Comments> comments = new ArrayList<>();
+    private Collection<Comment> comments = new ArrayList<>();
 
     @ManyToOne
-    private Columns column;
+    private Column column;
 
     @ManyToMany
     @JoinTable(
@@ -43,6 +43,6 @@ public class Cards extends Auditable {
 //            name = "auth_user_cards",
             joinColumns = @JoinColumn(name = "card_id"),
             inverseJoinColumns = @JoinColumn(name = "label_id"))
-    private Collection<Labels> labels = new ArrayList<>();
+    private Collection<Label> labels = new ArrayList<>();
 
 }

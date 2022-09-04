@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.function.Function;
 
 /**
- * @author "Elmurodov Javohir"
+ * @author ""
  * @since 19/08/22/12:00 (Friday)
  * spring-boot-features/IntelliJ IDEA
  */

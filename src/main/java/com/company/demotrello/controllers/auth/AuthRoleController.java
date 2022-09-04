@@ -7,15 +7,9 @@ import com.company.demotrello.response.ApiResponse;
 import com.company.demotrello.services.auth.AuthRoleService;
 import org.springframework.web.bind.annotation.*;
 
-
 import javax.validation.Valid;
 import java.util.List;
 
-/**
- * @author "Elmurodov Javohir"
- * @since 19/08/22/15:47 (Friday)
- * spring-boot-features/IntelliJ IDEA
- */
 @RestController
 public class AuthRoleController extends ApiController<AuthRoleService> {
 

@@ -13,13 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-
-/**
- * @author "Elmurodov Javohir"
- * @since 19/08/22/10:50 (Friday)
- * spring-boot-features/IntelliJ IDEA
- */
-
 @RestController
 public class AuthUserController extends ApiController<AuthUserService> {
 

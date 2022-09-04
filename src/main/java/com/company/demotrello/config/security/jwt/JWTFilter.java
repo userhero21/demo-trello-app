@@ -22,7 +22,7 @@ import static com.company.demotrello.config.security.SecurityConstants.WHITE_LIS
 
 
 /**
- * @author "Elmurodov Javohir"
+ * @author ""
  * @since 19/08/22/12:01 (Friday)
  * spring-boot-features/IntelliJ IDEA
  */

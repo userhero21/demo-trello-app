@@ -6,7 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * @author "Elmurodov Javohir"
+ * @author ""
  * @since 19/08/22/12:18 (Friday)
  * spring-boot-features/IntelliJ IDEA
  */

@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import java.io.Serializable;
 
 /**
- * @author "Elmurodov Javohir"
+ * @author ""
  * @since 19/08/22/10:37 (Friday)
  * spring-boot-features/IntelliJ IDEA
  */

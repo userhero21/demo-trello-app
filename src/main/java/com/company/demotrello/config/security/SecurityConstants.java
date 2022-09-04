@@ -1,7 +1,7 @@
 package com.company.demotrello.config.security;
 
 /**
- * @author "Elmurodov Javohir"
+ * @author ""
  * @since 22/08/22/09:37 (Monday)
  * spring-boot-features/IntelliJ IDEA
  */

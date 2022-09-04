@@ -3,7 +3,7 @@ package com.company.demotrello.controllers;
 import lombok.RequiredArgsConstructor;
 
 /**
- * @author "Elmurodov Javohir"
+ * @author ""
  * @since 22/08/22/09:24 (Monday)
  * spring-boot-features/IntelliJ IDEA
  */

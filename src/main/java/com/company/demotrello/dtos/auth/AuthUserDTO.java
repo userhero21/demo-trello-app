@@ -4,11 +4,6 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-/**
- * @author "Elmurodov Javohir"
- * @since 22/08/22/10:48 (Monday)
- * spring-boot-features/IntelliJ IDEA
- */
 @Getter
 @Setter
 @AllArgsConstructor

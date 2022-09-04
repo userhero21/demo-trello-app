@@ -13,12 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.function.Supplier;
 
-/**
- * @author "Elmurodov Javohir"
- * @since 19/08/22/15:48 (Friday)
- * spring-boot-features/IntelliJ IDEA
- */
-
 @Service
 @RequiredArgsConstructor
 public class AuthRoleService {
@@ -27,13 +21,13 @@ public class AuthRoleService {
     private final AuthRoleMapper authRoleMapper;
 
 
-//    @PreAuthorize("hasAuthority(T(com.company.demotrello.enums.Permissions).ROLE_READ)")
+    //    @PreAuthorize("hasAuthority(T(com.company.demotrello.enums.Permissions).ROLE_READ)")
     public List<AuthRoleDTO> getAll() {
         List<AuthRole> authRoles = authRoleRepository.findAll();
         return authRoleMapper.toDTO(authRoles);
     }
 
-//    @PreAuthorize("hasAuthority(T(com.company.demotrello.enums.Permissions).ROLE_READ)")
+    //    @PreAuthorize("hasAuthority(T(com.company.demotrello.enums.Permissions).ROLE_READ)")
     public AuthRoleDTO get(@NonNull Long id) {
         // TODO: 19/08/22 standardize status codes
         Supplier<GenericNotFoundException> notFoundException = () -> new GenericNotFoundException("Role not found", 404);
@@ -41,13 +35,13 @@ public class AuthRoleService {
         return authRoleMapper.toDTO(authRole);
     }
 
-//    @PreAuthorize("hasAuthority(T(com.company.demotrello.enums.Permissions).ROLE_CREATE)")
+    //    @PreAuthorize("hasAuthority(T(com.company.demotrello.enums.Permissions).ROLE_CREATE)")
     public void create(AuthRoleCreateDTO dto) {
         AuthRole authRole = authRoleMapper.fromCreateDTO(dto);
         authRoleRepository.save(authRole);
     }
 
-//    @PreAuthorize("hasAuthority(T(com.company.demotrello.enums.Permissions).ROLE_DELETE)")
+    //    @PreAuthorize("hasAuthority(T(com.company.demotrello.enums.Permissions).ROLE_DELETE)")
     public void delete(@NonNull Long id) {
         authRoleRepository.deleteById(id);
     }

@@ -1,6 +1,7 @@
 package com.company.demotrello.controllers.project;
 
 import com.company.demotrello.controllers.ApiController;
+import com.company.demotrello.dtos.project.card.CardChangeColumnDTO;
 import com.company.demotrello.dtos.project.card.CardCreateDTO;
 import com.company.demotrello.dtos.project.card.CardDTO;
 import com.company.demotrello.response.ApiResponse;
@@ -24,6 +25,12 @@ public class CardController extends ApiController<CardService> {
     @PostMapping(PATH + "/card")
     public ApiResponse<Void> create(@Valid @RequestBody CardCreateDTO dto) {
         service.create(dto);
+        return new ApiResponse<>(201);
+    }
+
+    @PostMapping(PATH + "/column/changeColumn")
+    public ApiResponse<Void> changeColumn(@Valid @RequestBody CardChangeColumnDTO dto) {
+        service.changeColumn(dto);
         return new ApiResponse<>(201);
     }
 

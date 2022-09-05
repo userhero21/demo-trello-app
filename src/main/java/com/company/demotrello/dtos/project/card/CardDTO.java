@@ -14,8 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class CardDTO {
+    private Long id;
     private String name;
     private String description;
+    private Long columnId;
     private List<Checklist> checklists;
     private List<AuthUser> members;
     private List<Comment> comments;

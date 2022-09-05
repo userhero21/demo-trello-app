@@ -1,5 +1,6 @@
 package com.company.demotrello.services.project;
 
+import com.company.demotrello.dtos.project.column.ColumnChangePositionDTO;
 import com.company.demotrello.dtos.project.column.ColumnCreateDTO;
 import com.company.demotrello.dtos.project.column.ColumnDTO;
 import com.company.demotrello.entities.project.Board;
@@ -12,7 +13,9 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 @Service
@@ -35,7 +38,7 @@ public class ColumnService {
         Board board = boardRepository.findById(columnCreateDTO.getBoardId()).orElseThrow(notFoundException);
         Column column = columnMapper.fromColumnCreateDTO(columnCreateDTO);
         column.setBoard(board);
-        // TODO: 9/5/2022 fix column position
+        column.setPosition(columnRepository.getMaxPosition(board) + 1);
         columnRepository.save(column);
     }
 
@@ -43,4 +46,17 @@ public class ColumnService {
         columnRepository.deleteById(id);
     }
 
+    @Transactional
+    public void changePosition(ColumnChangePositionDTO columnChangePositionDTO) {
+        Supplier<GenericNotFoundException> notFoundException = () -> new GenericNotFoundException("Column not found", 404);
+        Column column = columnRepository.findById(columnChangePositionDTO.getColumnId()).orElseThrow(notFoundException);
+        Optional<Column> columnByPosition = columnRepository.getColumnByPosition(columnChangePositionDTO.getPosition());
+        columnByPosition.ifPresent(column1 -> {
+            column1.setPosition(column.getPosition());
+            columnRepository.save(column1);
+        });
+        column.setPosition(columnChangePositionDTO.getPosition());
+        columnRepository.save(column);
+
+    }
 }

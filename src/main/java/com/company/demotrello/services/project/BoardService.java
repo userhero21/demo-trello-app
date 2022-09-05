@@ -28,13 +28,17 @@ public class BoardService {
 
 
     public BoardResponse<List<BoardDTO>, List<BoardDTO>> getAll() {
-        List<Workspace> myWorkspaces = workspaceRepository.getWorkspacesByOwner(Temp.authUser);
-        ArrayList<Board> myBoards = new ArrayList<>();
-        myWorkspaces.forEach(workspace -> myBoards.addAll(workspace.getBoards()));
-        // TODO: 9/5/2022 fix workspaceId
-        // TODO: 9/5/2022 fix joinBoards
+        List<BoardDTO> myBoardDTOS = new ArrayList<>();
+        List<BoardDTO> joinBoardDTOS = boardMapper.toDTO(boardRepository.getBoardsByMembers_Id(Temp.authUser.getId()));
 
-        return new BoardResponse<>(boardMapper.toDTO(myBoards), null);
+        workspaceRepository.getWorkspacesByOwner(Temp.authUser).forEach(workspace ->
+                workspace.getBoards().forEach(board -> {
+                    BoardDTO boardDTO = boardMapper.toDTO(board);
+                    boardDTO.setWorkspaceId(workspace.getId());
+                    myBoardDTOS.add(boardDTO);
+                }));
+
+        return new BoardResponse<>(myBoardDTOS, joinBoardDTOS);
     }
 
     public void create(BoardCreateDTO dto) {

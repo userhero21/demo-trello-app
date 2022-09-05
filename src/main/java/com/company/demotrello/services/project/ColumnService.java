@@ -35,7 +35,7 @@ public class ColumnService {
         Board board = boardRepository.findById(columnCreateDTO.getBoardId()).orElseThrow(notFoundException);
         Column column = columnMapper.fromColumnCreateDTO(columnCreateDTO);
         column.setBoard(board);
-        // TODO: 9/5/2022 fic column position
+        // TODO: 9/5/2022 fix column position
         columnRepository.save(column);
     }
 

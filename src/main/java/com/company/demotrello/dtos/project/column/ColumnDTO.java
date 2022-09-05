@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class ColumnDTO {
+    private Long id;
     private String name;
     private int position;
 }

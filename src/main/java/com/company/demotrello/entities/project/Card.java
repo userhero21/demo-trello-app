@@ -5,6 +5,8 @@ import com.company.demotrello.entities.base.Auditable;
 import com.company.demotrello.entities.comment.Comment;
 import com.company.demotrello.entities.utils.Label;
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,10 +24,13 @@ public class Card extends Auditable {
 
     private String description;
 
+
     @OneToMany(mappedBy = "card")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Collection<Checklist> checklists = new ArrayList<>();
 
     @OneToMany(mappedBy = "card")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Collection<Comment> comments = new ArrayList<>();
 
     @ManyToOne
@@ -36,6 +41,7 @@ public class Card extends Auditable {
 //            name = "auth_user_cards",
             joinColumns = @JoinColumn(name = "card_id"),
             inverseJoinColumns = @JoinColumn(name = "auth_user_id"))
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Collection<AuthUser> members = new ArrayList<>();
 
     @ManyToMany
@@ -43,6 +49,7 @@ public class Card extends Auditable {
 //            name = "auth_user_cards",
             joinColumns = @JoinColumn(name = "card_id"),
             inverseJoinColumns = @JoinColumn(name = "label_id"))
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Collection<Label> labels = new ArrayList<>();
 
 }

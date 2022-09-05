@@ -1,7 +1,6 @@
 package com.company.demotrello.repository.project;
 
 import com.company.demotrello.entities.auth.AuthUser;
-import com.company.demotrello.entities.project.Board;
 import com.company.demotrello.entities.project.Workspace;
 import org.springframework.data.jpa.repository.JpaRepository;
 

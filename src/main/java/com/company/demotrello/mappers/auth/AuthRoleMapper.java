@@ -5,7 +5,6 @@ import com.company.demotrello.dtos.auth.AuthRoleDTO;
 import com.company.demotrello.entities.auth.AuthRole;
 import org.mapstruct.Mapper;
 
-
 import java.util.List;
 
 @Mapper(componentModel = "spring")

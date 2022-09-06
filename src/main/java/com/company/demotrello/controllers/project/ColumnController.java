@@ -39,7 +39,7 @@ public class ColumnController extends ApiController<ColumnService> {
     public ApiResponse<Void> delete(@PathVariable Long id) {
         service.delete(id);
         // TODO: 19/08/22 standardize status codes
-        return new ApiResponse<>(204);
+        return new ApiResponse<>(201);
     }
 
 

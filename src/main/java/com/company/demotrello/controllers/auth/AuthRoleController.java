@@ -34,6 +34,13 @@ public class AuthRoleController extends ApiController<AuthRoleService> {
         return new ApiResponse<>(201);
     }
 
+//    @PostMapping(PATH + "/role/update")
+//    public ApiResponse<Void> update(@Valid @RequestBody AuthRoleUpdateDTO dto) {
+//        service.update(dto);
+//        // TODO: 19/08/22 standardize status codes
+//        return new ApiResponse<>(201);
+//    }
+
     @DeleteMapping(PATH + "/role/{id}")
     public ApiResponse<Void> delete(@PathVariable Long id) {
         service.delete(id);

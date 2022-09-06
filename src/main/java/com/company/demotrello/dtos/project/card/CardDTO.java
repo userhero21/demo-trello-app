@@ -23,7 +23,7 @@ public class CardDTO {
     private String description;
     private Long columnId;
     private List<ChecklistDTO> checklists;
-//    private List<MemberDTO> members;
+    private List<MemberDTO> members;
     private List<CommentDTO> comments;
-//    private List<LabelDTO> labels;
+    private List<LabelDTO> labels;
 }

@@ -45,4 +45,8 @@ public class AuthRoleService {
     public void delete(@NonNull Long id) {
         authRoleRepository.deleteById(id);
     }
+
+//    public void update(AuthRoleUpdateDTO dto) {
+//
+//    }
 }

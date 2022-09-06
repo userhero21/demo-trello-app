@@ -11,5 +11,7 @@ public interface AuthUserRepository extends JpaRepository<AuthUser, Long> {
 
     Optional<AuthUser> findByEmail(String email);
 
+    List<AuthUser> getAuthUsersByJoinCards_Id(Long cardId);
+
 //    List<AuthUser> getAuthUsersByJoinWorkspaces_Id(Long joinWorkspaceId);
 }

@@ -7,10 +7,8 @@ import com.company.demotrello.entities.project.Card;
 import com.company.demotrello.entities.project.Column;
 import com.company.demotrello.exceptions.GenericNotFoundException;
 import com.company.demotrello.mappers.project.CardMapper;
-import com.company.demotrello.repository.project.CardRepository;
-import com.company.demotrello.repository.project.ChecklistRepository;
-import com.company.demotrello.repository.project.ColumnRepository;
-import com.company.demotrello.repository.project.CommentRepository;
+import com.company.demotrello.repository.AuthUserRepository;
+import com.company.demotrello.repository.project.*;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,6 +22,8 @@ public class CardService {
     private final CardRepository cardRepository;
     private final ColumnRepository columnRepository;
     private final ChecklistRepository checklistRepository;
+    private final AuthUserRepository authUserRepository;
+    private final LabelRepository labelRepository;
     private final CommentRepository commentRepository;
     private final CardMapper cardMapper;
 
@@ -33,9 +33,9 @@ public class CardService {
         Card card = cardRepository.findById(id).orElseThrow(notFoundException);
 
         card.setChecklists(checklistRepository.getChecklistsByCard(card));
-        // TODO: 9/6/2022 fix members
+        card.setMembers(authUserRepository.getAuthUsersByJoinCards_Id(card.getId()));
         card.setComments(commentRepository.getCommentsByCard(card));
-        // TODO: 9/6/2022 fix labels
+        card.setLabels(labelRepository.getLabelsByCards_Id(card.getId()));
 
         CardDTO cardDTO = cardMapper.toDTO(card);
         cardDTO.setColumnId(card.getColumn().getId());

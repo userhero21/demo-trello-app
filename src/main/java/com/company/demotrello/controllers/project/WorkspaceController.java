@@ -1,6 +1,7 @@
 package com.company.demotrello.controllers.project;
 
 import com.company.demotrello.controllers.ApiController;
+import com.company.demotrello.dtos.project.workspace.WorkspaceAddMemberDTO;
 import com.company.demotrello.dtos.project.workspace.WorkspaceCreateDTO;
 import com.company.demotrello.dtos.project.workspace.WorkspaceDTO;
 import com.company.demotrello.response.ApiResponse;
@@ -31,6 +32,12 @@ public class WorkspaceController extends ApiController<WorkspaceService> {
     @PostMapping(PATH + "/workspace")
     public ApiResponse<Void> create(@Valid @RequestBody WorkspaceCreateDTO dto) {
         service.create(dto);
+        return new ApiResponse<>(201);
+    }
+
+    @PostMapping(PATH + "/workspace/add/member")
+    public ApiResponse<Void> addMember(@Valid @RequestBody WorkspaceAddMemberDTO dto) {
+        service.addMember(dto);
         return new ApiResponse<>(201);
     }
 

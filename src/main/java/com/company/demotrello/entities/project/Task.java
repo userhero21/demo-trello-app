@@ -20,7 +20,7 @@ public class Task extends Auditable {
 
     private String name;
 
-    private boolean isCompleted;
+    private boolean status;
 
     @ManyToMany
     @JoinTable(

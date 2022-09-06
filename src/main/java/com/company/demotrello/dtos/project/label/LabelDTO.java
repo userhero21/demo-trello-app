@@ -1,4 +1,4 @@
-package com.company.demotrello.dtos.project.task;
+package com.company.demotrello.dtos.project.label;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TaskDTO {
+public class LabelDTO {
     private String name;
-    private boolean status;
+    private String color;
 }

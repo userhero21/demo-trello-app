@@ -19,7 +19,7 @@ public class Comment extends Auditable {
     private String title;
 
     @ManyToOne
-    private AuthUser authUser;
+    private AuthUser from;
 
     @ManyToOne
     private Card card;

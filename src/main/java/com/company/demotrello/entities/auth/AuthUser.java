@@ -50,12 +50,14 @@ public class AuthUser extends Auditable {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             joinColumns = @JoinColumn(name = "auth_user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "auth_role_id", referencedColumnName = "id")
-    )
+            inverseJoinColumns = @JoinColumn(name = "auth_role_id", referencedColumnName = "id"))
     private Collection<AuthRole> roles;
 
     @ManyToMany(mappedBy = "members")
     private Collection<Workspace> joinWorkspaces = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "members")
+    private Collection<Card> joinCards = new ArrayList<>();
 
     public enum Status {
         ACTIVE, NOT_ACTIVE, BLOCKED,

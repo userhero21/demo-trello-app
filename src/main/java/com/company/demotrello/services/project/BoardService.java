@@ -52,7 +52,12 @@ public class BoardService {
     public BoardDTO get(@NonNull Long id) {
         Supplier<GenericNotFoundException> notFoundException = () -> new GenericNotFoundException("Board not found", 404);
         Board board = boardRepository.findById(id).orElseThrow(notFoundException);
-        return boardMapper.toDTO(board);
+
+        BoardDTO boardDTO = boardMapper.toDTO(board);
+        boardDTO.setWorkspaceId(board.getWorkspace().getId());
+
+        // TODO: 9/6/2022 fix workspace id
+        return boardDTO;
     }
 
     public void delete(@NonNull Long id) {

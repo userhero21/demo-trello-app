@@ -8,7 +8,9 @@ import com.company.demotrello.entities.project.Column;
 import com.company.demotrello.exceptions.GenericNotFoundException;
 import com.company.demotrello.mappers.project.CardMapper;
 import com.company.demotrello.repository.project.CardRepository;
+import com.company.demotrello.repository.project.ChecklistRepository;
 import com.company.demotrello.repository.project.ColumnRepository;
+import com.company.demotrello.repository.project.CommentRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,12 +23,19 @@ public class CardService {
 
     private final CardRepository cardRepository;
     private final ColumnRepository columnRepository;
+    private final ChecklistRepository checklistRepository;
+    private final CommentRepository commentRepository;
     private final CardMapper cardMapper;
 
 
     public CardDTO get(@NonNull Long id) {
         Supplier<GenericNotFoundException> notFoundException = () -> new GenericNotFoundException("Card not found", 404);
         Card card = cardRepository.findById(id).orElseThrow(notFoundException);
+
+        card.setChecklists(checklistRepository.getChecklistsByCard(card));
+        // TODO: 9/6/2022 fix members
+        card.setComments(commentRepository.getCommentsByCard(card));
+        // TODO: 9/6/2022 fix labels
 
         CardDTO cardDTO = cardMapper.toDTO(card);
         cardDTO.setColumnId(card.getColumn().getId());

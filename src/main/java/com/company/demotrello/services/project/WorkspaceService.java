@@ -4,6 +4,7 @@ import com.company.demotrello.config.Temp;
 import com.company.demotrello.dtos.project.workspace.WorkspaceAddMemberDTO;
 import com.company.demotrello.dtos.project.workspace.WorkspaceCreateDTO;
 import com.company.demotrello.dtos.project.workspace.WorkspaceDTO;
+import com.company.demotrello.dtos.project.workspace.WorkspaceUpdateDTO;
 import com.company.demotrello.entities.auth.AuthUser;
 import com.company.demotrello.entities.project.Workspace;
 import com.company.demotrello.exceptions.GenericNotFoundException;
@@ -59,6 +60,16 @@ public class WorkspaceService {
         Workspace workspace = workspaceRepository.getWorkspaceByIdAndOwner(dto.getWorkspaceId(), Temp.authUser)
                 .orElseThrow(notFoundException);
         workspace.setMembers(List.of(authUser));
+        workspaceRepository.save(workspace);
+    }
+
+    public void update(WorkspaceUpdateDTO dto) {
+        Supplier<GenericNotFoundException> notFoundException = () -> new GenericNotFoundException("Workspace not found", 404);
+        Workspace workspace = workspaceRepository.getWorkspaceByIdAndOwner(dto.getWorkspaceId(), Temp.authUser)
+                .orElseThrow(notFoundException);
+        // TODO: 9/6/2022 fix full check
+        workspace.setName(dto.getName());
+        workspace.setDescription(dto.getDescription());
         workspaceRepository.save(workspace);
     }
 }

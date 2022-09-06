@@ -25,7 +25,6 @@ public class Label extends Auditable {
 
     @ManyToMany
     @JoinTable(
-//            name = "auth_user_cards",
             joinColumns = @JoinColumn(name = "label_id"),
             inverseJoinColumns = @JoinColumn(name = "card_id"))
     private Collection<Card> cards = new ArrayList<>();

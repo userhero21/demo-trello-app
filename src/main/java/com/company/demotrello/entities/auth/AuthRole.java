@@ -21,7 +21,6 @@ public class AuthRole extends Auditable implements GrantedAuthority {
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-//            name = "auth_role_permissions",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "permission_id"))
     private Collection<AuthPermission> permissions;

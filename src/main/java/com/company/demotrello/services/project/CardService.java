@@ -27,6 +27,7 @@ public class CardService {
     public CardDTO get(@NonNull Long id) {
         Supplier<GenericNotFoundException> notFoundException = () -> new GenericNotFoundException("Card not found", 404);
         Card card = cardRepository.findById(id).orElseThrow(notFoundException);
+
         CardDTO cardDTO = cardMapper.toDTO(card);
         cardDTO.setColumnId(card.getColumn().getId());
         return cardDTO;

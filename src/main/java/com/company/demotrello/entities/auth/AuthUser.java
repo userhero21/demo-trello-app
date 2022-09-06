@@ -37,21 +37,18 @@ public class AuthUser extends Auditable {
 
     @ManyToMany
     @JoinTable(
-//            name = "auth_user_cards",
             joinColumns = @JoinColumn(name = "auth_user_id"),
             inverseJoinColumns = @JoinColumn(name = "task_id"))
     private Collection<Task> tasks = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(
-//            name = "auth_user_cards",
             joinColumns = @JoinColumn(name = "card_id"),
             inverseJoinColumns = @JoinColumn(name = "auth_user_id"))
     private Collection<Card> cards = new ArrayList<>();
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-//            name = "auth_user_auth_role",
             joinColumns = @JoinColumn(name = "auth_user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "auth_role_id", referencedColumnName = "id")
     )

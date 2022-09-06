@@ -1,5 +1,6 @@
 package com.company.demotrello.dtos.project.card;
 
+import com.company.demotrello.dtos.project.checklist.ChecklistDTO;
 import com.company.demotrello.entities.auth.AuthUser;
 import com.company.demotrello.entities.comment.Comment;
 import com.company.demotrello.entities.project.Checklist;
@@ -18,8 +19,9 @@ public class CardDTO {
     private String name;
     private String description;
     private Long columnId;
-    private List<Checklist> checklists;
-    private List<AuthUser> members;
-    private List<Comment> comments;
-    private List<Label> labels;
+//    private List<ChecklistDTO> checklists;
+//    private List<AuthUser> members;
+//    private List<Comment> comments;
+//    private List<Label> labels;
+    // TODO: 9/6/2022 fix this
 }

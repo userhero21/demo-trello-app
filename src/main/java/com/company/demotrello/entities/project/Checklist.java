@@ -6,6 +6,9 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Getter
 @Setter
@@ -20,7 +23,7 @@ public class Checklist extends Auditable {
     @ManyToOne
     private Card card;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Task task;
+    @OneToMany(mappedBy = "checklist", fetch = FetchType.EAGER)
+    private Collection<Task> tasks = new ArrayList<>();
 
 }

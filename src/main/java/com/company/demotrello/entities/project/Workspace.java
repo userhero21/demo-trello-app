@@ -28,7 +28,6 @@ public class Workspace extends Auditable {
 
     @ManyToMany
     @JoinTable(
-//            name = "auth_user_cards",
             joinColumns = @JoinColumn(name = "workspace_id"),
             inverseJoinColumns = @JoinColumn(name = "auth_user_id"))
     private Collection<AuthUser> members = new ArrayList<>();

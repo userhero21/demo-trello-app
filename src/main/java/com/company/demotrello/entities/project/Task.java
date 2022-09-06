@@ -3,6 +3,8 @@ package com.company.demotrello.entities.project;
 import com.company.demotrello.entities.auth.AuthUser;
 import com.company.demotrello.entities.base.Auditable;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,12 +24,11 @@ public class Task extends Auditable {
 
     @ManyToMany
     @JoinTable(
-//            name = "auth_user_cards",
             joinColumns = @JoinColumn(name = "task_id"),
             inverseJoinColumns = @JoinColumn(name = "auth_user_id"))
     private Collection<AuthUser> members = new ArrayList<>();
 
-    @OneToMany(mappedBy = "task")
-    private Collection<Checklist> checklists = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Checklist checklist;
 
 }

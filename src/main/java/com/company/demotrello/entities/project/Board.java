@@ -28,7 +28,6 @@ public class Board extends Auditable {
 
     @ManyToMany
     @JoinTable(
-//            name = "auth_user_cards",
             joinColumns = @JoinColumn(name = "board_id"),
             inverseJoinColumns = @JoinColumn(name = "auth_user_id"))
     private Collection<AuthUser> members = new ArrayList<>();
